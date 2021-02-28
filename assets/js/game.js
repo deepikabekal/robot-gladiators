@@ -12,9 +12,30 @@ var fight = function() {
     enemyHealth = enemyHealth - playerAttack;
     console.log(enemyHealth);
     window.alert(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
+    
+    // check enemy's health
+    if (enemyHealth <= 0) {
+        window.alert(enemyName + " has died!");
+      } 
+      else {
+        window.alert(enemyName + " still has " + enemyHealth + " health left.");
+      }
+
     playerHealth = playerHealth - enemyAttack;
     console.log(playerHealth);
     window.alert(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
+    
+    //check if the player robot's health
+    if (playerHealth<=0) {
+        window.alert(playerName + " has died!");
+    }
+    else {
+        window.alert(playerName+ " still has " + playerHealth + " health left.");
+    }
+
+
 };
 
 fight();
+
+
