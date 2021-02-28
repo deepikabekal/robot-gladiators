@@ -4,11 +4,12 @@ var playerAttack = 10;
 var playerMoney = 10;
 console.log(playerName, playerHealth, playerAttack);
 
-var enemyName = "Roberto";
+var enemyNames = ["Roberto", "Android Amy", "Rob Trumble"];
+console.log(enemyNames);
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-var fight = function() {
+var fight = function(enemyName) {
     window.alert("Welcome to Robot Gladiators!");
     
     //asking if the player wants to fight or skip
@@ -67,6 +68,7 @@ var fight = function() {
 
 };
 
-fight();
-
+for(var i = 0; i < enemyNames.length; i++) {
+    fight(enemyNames[i]);
+  }
 
