@@ -9,8 +9,14 @@ console.log(enemyNames);
 var enemyHealth = 50;
 var enemyAttack = 12;
 
+window.alert("Welcome to Robot Gladiators!");
+
 var fight = function(enemyName) {
-    window.alert("Welcome to Robot Gladiators!");
+
+    // repeat and execute as long as the enemy-robot is alive 
+  while(enemyHealth > 0) {
+    // place fight function code block here . . .
+    
     
     //asking if the player wants to fight or skip
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
@@ -22,7 +28,7 @@ var fight = function(enemyName) {
     enemyHealth = enemyHealth - playerAttack;
     console.log(enemyHealth);
     window.alert(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.");
-    
+    console.log(playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining.")
     // check enemy's health
     if (enemyHealth <= 0) {
         window.alert(enemyName + " has died!");
@@ -34,13 +40,16 @@ var fight = function(enemyName) {
     playerHealth = playerHealth - enemyAttack;
     console.log(playerHealth);
     window.alert(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
+    console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.")
     
     //check if the player robot's health
     if (playerHealth<=0) {
         window.alert(playerName + " has died!");
+        console.log(playerName + " has died!")
     }
     else {
         window.alert(playerName+ " still has " + playerHealth + " health left.");
+        console.log(playerName+ " still has " + playerHealth + " health left.")
         
     }
 
@@ -55,6 +64,7 @@ var fight = function(enemyName) {
             window.alert(playerName + " has chosen to skip the fight. Goodbye!");
             playerMoney = playerMoney - 2;           
             window.alert("Penalty! " + playerName + " has now " + playerMoney + " money left.");
+            console.log("Penalty! " + playerName + " has now " + playerMoney + " money left.")
        }
        else {
            fight();
@@ -66,9 +76,13 @@ var fight = function(enemyName) {
     }
 
 
+  }
+    
 };
 
 for(var i = 0; i < enemyNames.length; i++) {
-    fight(enemyNames[i]);
+  var pickedEnemyName = enemyNames[i];
+  enemyHealth = 50;
+    fight(pickedEnemyName);
   }
 
