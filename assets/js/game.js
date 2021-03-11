@@ -1,5 +1,5 @@
 var playerInfo = {
-  name: window.prompt("What is your robot's name?"),
+  name: getPlayerName(),
   health: 100,
   attack: 10,
   money: 10,
@@ -9,13 +9,24 @@ var playerInfo = {
     this.attack = 10;
   },
   refillHealth: function() {
+    if (this.money>=7){
+    window.alert("Refilling player's health by 20 for 7 dollars.");
     this.health += 20;
     this.money -= 7;
-  }, // comma!
+    } else {
+      window.alert("You dont have enough money!");
+    }
+  }, 
   upgradeAttack: function() {
+    if (playerInfo.money >= 7){
+      window.alert("Upgrading player's attack by 6 for 7 dollars.");
     this.attack += 6;
     this.money -= 7;
+    } else {
+      window.alert("You dont have enough money!");
+    }
   }
+
 };
 //console.log(playerInfo.name, playerInfo.health, playerInfo.money);
 
@@ -41,35 +52,30 @@ var shop = function(){
   switch (playerItem) {
     case "UPGRADE":
     case "upgrade":
-      if (playerInfo.money >= 7){
-        window.alert("Upgrading player's attack by 6 for 7 dollars.");
+      
         // increase attack and decrease money
         playerInfo.upgradeAttack;   
-      } else {
-        window.alert("You dont have enough money!");
-      }      
+       
       break;
+
     case "REFILL":
     case "refill":
-      if (playerInfo.money >=7){
-        window.alert("Refilling player's health by 20 for 7 dollars.");
-        // increase health and decrease money
-        playerInfo.refillHealth;
-      } else {
-        window.alert("You dont have enough money!");
-      }       
+      playerInfo.refillHealth;
       break;
+
     case "LEAVE" :
     case "leave":
       window.alert("Leaving the store.");
       // do nothing, so function will end
       break;
+
     default:
       window.alert("You did not pick a valid option. Try again.");
       // call shop() again to force player to pick a valid option
       shop();
       break;
   }
+  
 
 
 } ;
@@ -183,12 +189,14 @@ var fight = function(enemy) {
 var startGame = function(){
   //reset player stats
   playerInfo.reset();
+  
   for(var i = 0; i < enemyInfo.length; i++) {
 
     if (playerInfo.health > 0) {
       // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
       window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
       
+      //debugger;
 
       // pick new enemy to fight based on the index of the enemyNames array
       var pickedEnemyObj = enemyInfo[i];
@@ -198,7 +206,7 @@ var startGame = function(){
       
   
       // use debugger to pause script from running and check what's going on at that moment in the code
-      debugger;
+      //debugger;
   
       // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
       fight(pickedEnemyObj);
@@ -215,7 +223,18 @@ var startGame = function(){
 
 startGame();
 
-//function to end the game.
+function getPlayerName(){
+  
+  var name = "";
+  while (name === "" || name === null){
+
+    
+    name = prompt("What is your robot's name?");
+  }
+
+  console.log("Your robot's name is " + name);
+  return name;
+}
 
 
 
