@@ -47,24 +47,22 @@ var enemyInfo = [
 ];
 
 var shop = function(){
-  var playerItem = window.prompt("Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE' or 'LEAVE' to make a choice");
+  var playerItem = window.prompt("Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter 1 for REFILL, 2 for UPGRADE or 3 to LEAVE");
+  
+  playerItem = parseInt(playerItem);
   // use switch to carry out action
   switch (playerItem) {
-    case "UPGRADE":
-    case "upgrade":
-      
-        // increase attack and decrease money
-        playerInfo.upgradeAttack;   
-       
+    case 1:
+      // increase health and decrease money
+        playerInfo.refillHealth();                
       break;
 
-    case "REFILL":
-    case "refill":
-      playerInfo.refillHealth;
+    case 2:
+      // increase health and decrease money
+        playerInfo.upgradeAttack();        
       break;
 
-    case "LEAVE" :
-    case "leave":
+    case 3:    
       window.alert("Leaving the store.");
       // do nothing, so function will end
       break;
